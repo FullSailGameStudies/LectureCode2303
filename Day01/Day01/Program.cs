@@ -49,9 +49,19 @@ namespace Day01
      */
     internal class Program
     {
+        static string DoIt(string msg)//pass by value param
+        {
+            msg += "!";
+            //$ - C# interpolated string
+            return $"Hello {msg}!";
+        }
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            string location = "Gotham";
+            string hello = DoIt(location);
+            PrintIt(hello);
 
             /*
               Calling a method
@@ -78,12 +88,19 @@ namespace Day01
             /*
                 CHALLENGE 1:
 
-                    call the Sum method on the t1000 calculator. Print the sum that is returned.
+                    call the Sum method on the t1000 calculator. 
+                    Print the sum that is returned.
              
             */
-            Calculator t1000 = new Calculator();
+            Calculator t1000 = new Calculator();//t1000 is an INSTANCE of calculator
+            //use the dot operator '.' on t1000
+            Console.WriteLine(t1000.ModelNumber);
 
+            int score1 = 1000, score2 = 50;
+            int scoreTotal = t1000.Sum(score1, score2);
+            Console.WriteLine($"Total Score: {scoreTotal}");
 
+            Console.WriteLine($"Terminators: {Calculator.NumberOfTerminatorsMade}");
 
 
             /*   
@@ -99,6 +116,21 @@ namespace Day01
             */
             List<string> names = new List<string>(); //this list stores strings and only strings.
 
+            Random rando = new Random();
+            int[] scores = new int[] { 
+                rando.Next(10000) ,
+                rando.Next(10000) ,
+                rando.Next(10000)
+            };
+            for (int i = 0; i < scores.Length; i++)
+            {
+                Console.WriteLine(scores[i]);
+            }
+            foreach (var score in scores)
+            {
+                Console.WriteLine(score);
+            }
+            //C# anonymous types
             /*
                 CHALLENGE 2:
 
@@ -167,6 +199,11 @@ namespace Day01
             Console.ReadKey(true);
         }
 
+        private static void PrintIt(string hello)
+        {
+            Console.WriteLine(hello);
+        }
+
         private static int AddOne(int localNumber)
         {
             return localNumber + 1;
@@ -177,6 +214,9 @@ namespace Day01
 
     class Calculator
     {
+        public static int NumberOfTerminatorsMade = 10000000;
+
+        public string ModelNumber = "T1000";
         public int Sum(int num1, int num2)
         {
             return num1 + num2;
