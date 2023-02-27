@@ -117,7 +117,7 @@ namespace Day01
             List<string> names = new List<string>(); //this list stores strings and only strings.
 
             Random rando = new Random();
-            int[] scores = new int[] { 
+            int[] scores = new int[3] { 
                 rando.Next(10000) ,
                 rando.Next(10000) ,
                 rando.Next(10000)
@@ -130,14 +130,13 @@ namespace Day01
             {
                 Console.WriteLine(score);
             }
+            int[] temp = new int[4];
+            for (int i = 0; i < scores.Length; i++)
+            {
+                temp[i] = scores[i];
+            }
+            scores = temp;
             //C# anonymous types
-            /*
-                CHALLENGE 2:
-
-                    Create a list that stores floats. Call the variable grades.
-             
-            */
-
 
 
 
@@ -155,7 +154,14 @@ namespace Day01
                 2) using the Add method. 
             */
             List<char> letters = new List<char>() { 'B', 'a', 't', 'm', 'a', 'n' };
-            letters.Add('!');
+            letters.Add('!');//adds to the end of the list
+
+            /*
+                CHALLENGE 2:
+
+                    Create a list that stores floats. Call the variable grades.
+             
+            */
 
             /*
                 CHALLENGE 3:
