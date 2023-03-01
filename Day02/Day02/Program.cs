@@ -136,6 +136,12 @@ namespace Day02
                     3) print out the min, max, and avg
              
             */
+            List<double> grades = new List<double>();
+            for (int i = 0; i < 10; i++)
+            {
+                grades.Add(randy.NextDouble() * 100);
+            }
+            GradeStats(grades, out double min, out double max, out double avg);
 
 
 
@@ -169,6 +175,28 @@ namespace Day02
 
 
 
+        }
+
+        private static void GradeStats(List<double> grades, out double min, out double max, out double avg)
+        {
+            min = double.MaxValue;
+            max = double.MinValue;
+            double sum = 0;
+            foreach (double grade in grades)
+            {
+                sum += grade;
+                if (min > grade)
+                    min = grade;
+
+                //OR
+                //min = Math.Min(min, grade);
+
+                if (max < grade) max = grade;
+                //OR
+                //ternary operator
+                max = (max < grade) ? grade : max; 
+            }
+            avg = sum / grades.Count;
         }
 
         private static void UpdateAllNumbers(ref int[] myNums)
