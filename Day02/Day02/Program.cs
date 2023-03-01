@@ -59,18 +59,19 @@ namespace Day02
      */
     internal class Program
     {
-        static void DoIt(ref int num, ref bool isEven)//pass by reference (ALIAS)
+        static void DoIt(ref int num, out bool isEven, out int rando)//pass by reference (ALIAS)
         {
             num *= 10;
-            //isEven = num % 2 == 0;
+            isEven = num % 2 == 0;
+            rando = randy.Next(100);
         }
         static Random randy = new Random();
         static void Main(string[] args)
         {
             int number = 5;
             Console.WriteLine(number);
-            bool even = false;
-            DoIt(ref number, ref even);
+            bool even;// = false;
+            DoIt(ref number, out even, out int randomNumber);
             Console.WriteLine(number);
             /*   
                 ╔══════════════════════════════╗ 
@@ -189,7 +190,9 @@ namespace Day02
         private static void GetRandomColor(out ConsoleColor outColor)
         {
             //the method MUST initialize the outColor parameter
-            outColor = (ConsoleColor)randy.Next(16);
+            //outColor = (ConsoleColor)randy.Next(16);//upper bound is NON-inclusive
+
+            while ((outColor = (ConsoleColor)randy.Next(16)) == ConsoleColor.DarkYellow) ;
 
         }
 
