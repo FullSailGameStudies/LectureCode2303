@@ -95,6 +95,18 @@ namespace Day02
              
             */
             double grade = randy.NextDouble() * 100;
+            Console.Write($"{grade} was curved by ");
+            double curved = CurveGrade(ref grade);
+            Console.WriteLine($"{curved} to be {grade}");
+
+            int num = 5;//value type. the value stored on the stack.
+            int[] numbers = new int[] { 1, 2, 3, 4, 5 };//reference type. values stored in the heap
+            UpdateAllNumbers(ref numbers);//by value. COPY. copy what??
+            foreach (var item in numbers)
+            {
+                Console.WriteLine(item);
+            }
+
 
 
 
@@ -156,6 +168,22 @@ namespace Day02
 
 
 
+        }
+
+        private static void UpdateAllNumbers(ref int[] myNums)
+        {
+            myNums = new int[] { 5, 4, 3, 2, 1 };
+            for (int i = 0; i < myNums.Length; i++)
+            {
+                myNums[i] += i;
+            }//5,5,5,5,5
+        }
+
+        private static double CurveGrade(ref double steev)
+        {
+            double curvedAmount = steev * 0.05;
+            steev += curvedAmount;
+            return curvedAmount;
         }
 
         private static void GetRandomColor(out ConsoleColor outColor)
