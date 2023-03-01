@@ -173,6 +173,23 @@ namespace Day02
             dc.RemoveAt(dc.Count - 1);//removes the last item
             PrintList(dc);
 
+            dc = new()
+            { "Batman", "Wonder Woman", "Aquaman", "Superman", "Aquaman", "Aquaman", "Aquaman", "Aquaman" };
+            //for (int i = 0; i < dc.Count; i++ )
+            //{
+            //    if (dc[i].Equals("aquaman", StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        dc.RemoveAt(i);
+            //        i--;
+            //    }
+            //}
+            for (int i = dc.Count - 1; i >= 0; i--) //reverse for loop
+            {
+                if (dc[i].Equals("aquaman", StringComparison.OrdinalIgnoreCase))
+                    dc.RemoveAt(i);
+            }
+            PrintList(dc);
+
             /*
                 CHALLENGE 3:
 
@@ -180,8 +197,24 @@ namespace Day02
                         remove the min and max grades from the list.
                     Print the grades.
             */
+            grades.Remove(min);
+            grades.Remove(max);
+            foreach (var item in grades)
+            {
+                Console.WriteLine(item);
+            }
 
-
+            Console.ReadKey();
+            int x, y;
+            while (true)
+            {
+                x = randy.Next(Console.WindowWidth);
+                y = randy.Next(Console.WindowHeight-1);
+                Console.SetCursorPosition(x, y);
+                GetRandomColor(out randoColor);
+                Console.BackgroundColor = randoColor;
+                Console.Write(dc[randy.Next(dc.Count)]);
+            }
 
 
         }
