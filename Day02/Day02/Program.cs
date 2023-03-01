@@ -125,7 +125,7 @@ namespace Day02
             GetRandomColor(out randoColor);
             Console.BackgroundColor = randoColor;
             Console.WriteLine("Hello Gotham!");
-
+            Console.ResetColor();
 
             /*
                 CHALLENGE 2:
@@ -156,25 +156,43 @@ namespace Day02
                 [  Removing from a List  ]
 
                 There are 2 main ways to remove from a list:
-                1) bool Remove(item).  will remove the first one in the list that matches item. returns true if a match is found else removes false.
+                1) bool Remove(item).  
+                    will remove the first one in the list that matches item. 
+                    returns true if a match is found else removes false.
                 2) RemoveAt(index). will remove the item from the list at the index
 
             */
-            List<string> dc = new() { "Batman", "Wonder Woman", "Aquaman", "Superman", "Aquaman" };
-            bool found = dc.Remove("Aquaman");
+            List<string> dc = new() 
+            { "Batman", "Wonder Woman", "Aquaman", "Superman", "Aquaman" };
+            PrintList(dc);
+            bool found = dc.Remove("Aquaman");//removes ONLY 1 Aquaman, if it finds one
+            if (found) Console.WriteLine("Aquaman was successfully booted from the JLA. YEAH!");
+            else Console.WriteLine("Aquaman was NOT found. It's a good day.");
+            PrintList(dc);
 
             dc.RemoveAt(dc.Count - 1);//removes the last item
+            PrintList(dc);
 
             /*
                 CHALLENGE 3:
 
-                    Using the list of grades you created in CHALLENGE 2, remove the min and max grades from the list.
+                    Using the list of grades you created in CHALLENGE 2, 
+                        remove the min and max grades from the list.
                     Print the grades.
             */
 
 
 
 
+        }
+
+        private static void PrintList(List<string> dc)
+        {
+            Console.WriteLine("------------JLA-----------");
+            foreach (var item in dc)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         private static void GradeStats(List<double> grades, out double min, out double max, out double avg)
