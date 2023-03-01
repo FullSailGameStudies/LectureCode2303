@@ -59,10 +59,19 @@ namespace Day02
      */
     internal class Program
     {
+        static void DoIt(ref int num, ref bool isEven)//pass by reference (ALIAS)
+        {
+            num *= 10;
+            //isEven = num % 2 == 0;
+        }
         static Random randy = new Random();
         static void Main(string[] args)
         {
-
+            int number = 5;
+            Console.WriteLine(number);
+            bool even = false;
+            DoIt(ref number, ref even);
+            Console.WriteLine(number);
             /*   
                 ╔══════════════════════════════╗ 
                 ║Parameters: Pass by Reference.║

@@ -115,6 +115,41 @@ namespace Day01
                 When you want to create a List variable, replace T with whatever type of data you want to store in the List.
             */
             List<string> names = new List<string>(); //this list stores strings and only strings.
+            PrintInfo(names);//Count: 0   Capacity: 0
+            names.Add("Batman");
+            PrintInfo(names);//Count: 1   Capacity: 4
+            names.Add("Bruce");
+            names.Add("The Bat");
+            names.Add("The Greatest Detective");
+            PrintInfo(names);//Count: 4   Capacity: 4
+            names.Add("The Dark Knight");
+            PrintInfo(names);//Count: 5   Capacity: 10? 9? 420?
+            names.Add("Banner");
+            names.Add("Bane");
+            names.Add("Joker");
+            names.Add("Not Clark Kent");
+            PrintInfo(names);//Count: 9   Capacity: 16
+
+            try
+            {
+                Console.WriteLine(names[12]);
+            }
+            catch (Exception)
+            {
+            }
+
+            for (int i = 0; i < names.Count; i++)
+            {
+                Console.WriteLine(names[i]);
+            }
+            foreach (string name in names)
+            {
+                Console.WriteLine(name);
+            }
+
+
+
+
 
             Random rando = new Random();
             int[] scores = new int[3] { 
@@ -162,6 +197,7 @@ namespace Day01
                     Create a list that stores floats. Call the variable grades.
              
             */
+            List<float> grades = new List<float>();
 
             /*
                 CHALLENGE 3:
@@ -169,6 +205,12 @@ namespace Day01
                     Add a few grades to the grades list you created in CHALLENGE 2.
              
             */
+            grades.Add((float)rando.NextDouble() * 100);
+            grades.Add((float)rando.NextDouble() * 100);
+            grades.Add((float)rando.NextDouble() * 100);
+            grades.Add((float)rando.NextDouble() * 100);
+            grades.Add((float)rando.NextDouble() * 100);
+            grades.Add((float)rando.NextDouble() * 100);
 
 
 
@@ -200,9 +242,18 @@ namespace Day01
                     3) print the average that is returned.
              
             */
+            float average = t1000.Average(grades);
+            Console.WriteLine($"\n\nAverage grade: {average}");
 
 
             Console.ReadKey(true);
+        }
+
+        private static void PrintInfo(List<string> names)
+        {
+            //Count: # of items that have been ADDED
+            //Capacity: Length of the internal array
+            Console.WriteLine($"Count: {names.Count} \tCapacity: {names.Capacity}");
         }
 
         private static void PrintIt(string hello)
@@ -234,8 +285,12 @@ namespace Day01
             float avg = 0F;
 
             //loop over the numbers and calculate the average
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                avg += numbers[i];
+            }
 
-            return avg;
+            return avg / numbers.Count;
         }
     }
 }
