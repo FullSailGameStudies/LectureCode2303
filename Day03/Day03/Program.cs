@@ -85,12 +85,61 @@ namespace Day03
                 CHALLENGE 1:
 
                     Write a ColorWriteLine method to print a message with a foreground color in the console.
-                    1) add a string message parameter AND an optional color parameter. Choose whatever default color you want.
+                    1) add a string message parameter AND an optional color parameter. 
+                       Choose whatever default color you want.
                     2) in the method, set the foreground color to the optional parameter
                     3) print the message
              
             */
+            ColorWriteLine("Hello Gotham!");
+            ColorWriteLine("Batman > Aquaman. True!", ConsoleColor.DarkRed);
 
+
+            string[] names = new string[] { "Batman", "The Bat", "NOT Aquaman", "Bruce" };
+            List<string> theBest = new List<string>();
+            for (int i = 0; i < names.Length; i++)
+            {
+                theBest.Add(names[i]);
+            }
+
+            List<string> best = new List<string>(names);
+
+            //OR
+
+            List<string> notAquamen = names.ToList();
+
+            List<string> upper = MakeUpper(theBest);
+            foreach (var item in upper)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadKey();
+
+            Random rando = new Random();
+            while (true)
+            {
+                Console.SetCursorPosition(rando.Next(Console.WindowWidth), rando.Next(Console.WindowHeight));
+                ColorWriteLine("BATMAN", (ConsoleColor)rando.Next(16));
+            }
+
+
+        }
+
+        private static List<string> MakeUpper(List<string> otherList)//pass by value (COPY). how is the parameter being passed?
+        {
+            List<string> cloned = new List<string>(otherList);// otherList.ToList();
+            for (int i = 0; i < cloned.Count; i++)
+            {
+                cloned[i] = cloned[i].ToUpper();
+            }
+            return cloned;
+        }
+
+        private static void ColorWriteLine(string message, ConsoleColor foregroundColor = ConsoleColor.DarkCyan)
+        {
+            Console.ForegroundColor = foregroundColor;
+            Console.WriteLine(message);
+            Console.ResetColor();
         }
 
         static string PostFix(string fileName, int postFixNumber = 1) //postFixNumber is optional
