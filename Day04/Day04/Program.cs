@@ -21,6 +21,13 @@ namespace Day04
                 All recursive methods need an exit condition, something that prevents the loop from continuing.
               
             */
+            int j = 0;
+            DoIt(j);
+            for (int i = 0; i < 1000; i++)
+            {
+
+            }
+            ulong result = Factorial(5);
             int N = 0;
             RecursiveLoop(N);
             Console.ResetColor();
@@ -29,7 +36,8 @@ namespace Day04
             /*
                 CHALLENGE 1:
 
-                    convert this for loop to a recursive method called Bats. Call Bats here in Main.
+                    convert this for loop to a recursive method called Bats. 
+                    Call Bats here in Main.
              
                     for(int i = 0;i < 100;i++)
                     {
@@ -39,7 +47,13 @@ namespace Day04
                     }
             */
 
-
+            Console.Write((char)66);
+            Console.Write((char)65);
+            Console.Write((char)84);
+            Console.Write((char)77);
+            Console.Write((char)65);
+            Console.Write((char)78);
+            Console.WriteLine("!!!!!!!!!");
 
 
 
@@ -72,6 +86,23 @@ namespace Day04
 
         }
 
+        static ulong Factorial(uint N)
+        {
+            if (N <= 1) 
+                return 1;
+
+            ulong result = N * Factorial(N - 1); //N * (N-1)!
+            return result;
+        }
+
+        private static void DoIt(int j)
+        {
+            if(j < 1000)
+            {
+                Console.WriteLine("Done it.");
+                DoIt(j + 1);
+            }
+        }
 
         static void RecursiveLoop(int N)
         {
