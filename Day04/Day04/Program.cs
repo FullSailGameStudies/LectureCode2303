@@ -29,7 +29,7 @@ namespace Day04
             }
             ulong result = Factorial(5);
             int N = 0;
-            RecursiveLoop(N);
+            //RecursiveLoop(N);
             Console.ResetColor();
 
 
@@ -46,6 +46,10 @@ namespace Day04
                         Console.Write(' ');
                     }
             */
+            Console.Clear();
+            Console.WriteLine();
+            int k = 0;
+            Bats(k);
 
             Console.Write((char)66);
             Console.Write((char)65);
@@ -84,6 +88,18 @@ namespace Day04
                     
             */
 
+        }
+
+        private static void Bats(int k)
+        {
+            //for (; i < 100; i++)
+            if(k < 100)
+            {
+                Console.Write((char)78);
+                Console.Write((char)65);
+                Console.Write(' ');
+                Bats(++k);//k++ and k+1
+            }
         }
 
         static ulong Factorial(uint N)
