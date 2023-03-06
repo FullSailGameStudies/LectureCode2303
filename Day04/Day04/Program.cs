@@ -87,7 +87,28 @@ namespace Day04
                     end procedure
                     
             */
+            List<int> numbers = new() { 5, 4, 3, 2, 1 };
+            PrintMe(numbers);
+            BubbleSort(numbers);
+            PrintMe(numbers);
 
+            string s1 = "Batman", s2 = "Aquaman";
+            int compareResult = s1.CompareTo(s2);
+            // returns...
+            // -1  s1 LESS THAN s2
+            //  0  s1 EQUALS s2
+            //  1  s1 GREATER THAN s2
+            if(compareResult == 0) Console.WriteLine($"{s1} EQUALS {s2}");
+            else if (compareResult < 0) Console.WriteLine($"{s1} LESS THAN {s2}");
+            else if (compareResult > 0) Console.WriteLine($"{s1} GREATER THAN {s2}");
+        }
+
+        private static void PrintMe(List<int> numbers)
+        {
+            Console.WriteLine();
+            foreach (int i in numbers)
+                Console.Write($"{i} ");
+            Console.WriteLine();
         }
 
         static void BubbleSort(List<int> A)
