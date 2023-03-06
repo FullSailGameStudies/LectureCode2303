@@ -90,6 +90,28 @@ namespace Day04
 
         }
 
+        static void BubbleSort(List<int> A)
+        {
+            int n = A.Count;
+            bool swapped;
+            do
+            {
+                swapped = false;
+                for (int i = 1; i <= n-1; i++)
+                {
+                    if (A[i - 1] > A[i])
+                    {
+                        //int temp = A[i - 1];
+                        //A[i - 1] = A[i];
+                        //A[i] = temp;
+                        (A[i], A[i-1]) = (A[i-1], A[i]);//using tuples
+                        swapped = true;
+                    }
+                }
+                --n;
+            } while (swapped);
+        }
+
         private static void Bats(int k)
         {
             //for (; i < 100; i++)
