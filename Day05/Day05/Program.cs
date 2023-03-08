@@ -75,16 +75,6 @@ namespace Day04
            
             Dictionary<Weapon, int> backpack = new Dictionary<Weapon, int>();//will store the counts of each kind of weapon
 
-            /*
-                CHALLENGE 2:
-
-                    Create a Dictionary that stores names (string) and grades. Call the variable grades.
-             
-            */
-
-
-
-
             /*  
                 ╔══════════════════════════╗ 
                 ║ Dictionary<TKey, TValue> ║
@@ -97,13 +87,29 @@ namespace Day04
                 2) using the Add method. 
                 3) using [key] = value
             */
+
+            //
+            //  Keys MUST BE UNIQUE!
+            //  Values do not have to be unique
+            nums = new() { 1, 2, 3, 4, 5, 420 };
             backpack = new Dictionary<Weapon, int>()
             {
-                {Weapon.Sword, 5 }
+                // { key, value }   key-value pair
+                { Weapon.Sword, 5 } 
+                //{ Weapon.Sword, 6 } //throw a key-already-exists exception
             };
             backpack.Add(Weapon.Axe, 2);
+            //backpack.Add(Weapon.Axe, 24);//throw a key-already-exists exception
             backpack[Weapon.Spear] = 1;
+            backpack[Weapon.Spear] = 3; //simply overwrite the value
+            nums[2] = 13;
 
+            /*
+                CHALLENGE 2:
+
+                    Create a Dictionary that stores names (string) and grades. Call the variable grades.
+             
+            */
             /*
                 CHALLENGE 3:
 
