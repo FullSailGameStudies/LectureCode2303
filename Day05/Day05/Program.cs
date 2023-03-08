@@ -159,9 +159,19 @@ namespace Day04
              
             */
 
-
-
-
+            Console.WriteLine("----------PG2------------");
+            foreach (KeyValuePair<string, double> studentGrade in grades)
+            {
+                Console.Write($"{studentGrade.Key,-15}");
+                double grade = studentGrade.Value;
+                if (grade < 59.5) Console.ForegroundColor = ConsoleColor.Red;
+                else if (grade < 69.5) Console.ForegroundColor = ConsoleColor.DarkYellow;
+                else if (grade < 79.5) Console.ForegroundColor = ConsoleColor.Yellow;
+                else if (grade < 89.5) Console.ForegroundColor = ConsoleColor.Blue;
+                else Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"{grade:N2}");
+                Console.ResetColor();
+            }
 
             /*   
                 ╔══════════════════════════╗ 
