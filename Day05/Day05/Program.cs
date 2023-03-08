@@ -91,6 +91,7 @@ namespace Day04
             //
             //  Keys MUST BE UNIQUE!
             //  Values do not have to be unique
+            //
             nums = new() { 1, 2, 3, 4, 5, 420 };
             backpack = new Dictionary<Weapon, int>()
             {
@@ -109,14 +110,26 @@ namespace Day04
 
                     Create a Dictionary that stores names (string) and grades. Call the variable grades.
              
-            */
-            /*
                 CHALLENGE 3:
 
                     Add students and grades to your dictionary that you created in CHALLENGE 2.
              
             */
+            List<string> students = new()
+            {
+                "Michael B.", "Aiden", "Isaiah", "Adam", "Nicholas", "Lascelles", "Tylique", "Ryan",
+                "Iain", "John", "Erickson", "Dylan", "Najee", "Chali", "Tyler", "Robert P", "Sean",
+                "Caedan", "Blake", "Michael W.", "Kari", "Christian", "Jesse", "Joshua", "Kristina",
+                "Miguel", "Robert M", "Darien"
+            };
+            Dictionary<string, double> grades = new Dictionary<string, double>();
+            Random rando = new Random();
+            foreach (var student in students)
+            {
+                grades.Add(student, rando.NextDouble() * 100);
+            }
 
+            grades["Garrett"] = 100;
 
 
 
@@ -132,8 +145,10 @@ namespace Day04
                 You should use a foreach loop when needing to loop over the entire dictionary.
                
             */
-            foreach (KeyValuePair<Weapon,int> weaponCount in backpack)
+            foreach (KeyValuePair<Weapon, int> weaponCount in backpack)
+            {
                 Console.WriteLine($"You have {weaponCount.Value} {weaponCount.Key}");
+            }
 
 
 
