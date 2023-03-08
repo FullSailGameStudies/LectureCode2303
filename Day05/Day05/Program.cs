@@ -162,15 +162,7 @@ namespace Day04
             Console.WriteLine("----------PG2------------");
             foreach (KeyValuePair<string, double> studentGrade in grades)
             {
-                Console.Write($"{studentGrade.Key,-15}");
-                double grade = studentGrade.Value;
-                if (grade < 59.5) Console.ForegroundColor = ConsoleColor.Red;
-                else if (grade < 69.5) Console.ForegroundColor = ConsoleColor.DarkYellow;
-                else if (grade < 79.5) Console.ForegroundColor = ConsoleColor.Yellow;
-                else if (grade < 89.5) Console.ForegroundColor = ConsoleColor.Blue;
-                else Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"{grade:N2}");
-                Console.ResetColor();
+                PrintGrade(studentGrade);
             }
 
             /*   
@@ -184,22 +176,38 @@ namespace Day04
                 1) ContainsKey(key)
                 2) TryGetValue(key, out value)
                
-            */            
-            if(backpack.ContainsKey(Weapon.Axe))
+            */
+            //int maceCount = backpack[Weapon.Mace];//throw an exception
+            if (backpack.ContainsKey(Weapon.Axe))
                 Console.WriteLine($"{Weapon.Axe} count: {backpack[Weapon.Axe]}");
+            else
+                Console.WriteLine("Key wasn't found.");
 
-            if(backpack.TryGetValue(Weapon.Spear, out int spearCount))
+            if (backpack.TryGetValue(Weapon.Spear, out int spearCount))
                 Console.WriteLine($"{Weapon.Spear} count: {spearCount}");
 
 
             /*
                 CHALLENGE 5:
 
-                    Using either of the 2 ways to check for a key, look for a specific student in the dictionary. 
+                    Using either of the 2 ways to check for a key, 
+                        look for a specific student in the dictionary. 
                     If the student is found, print out the student's grade
                     else print out a message that the student was not found
              
             */
+            do
+            {
+                Console.Write("Please enter the student's name: ");
+                string studentName = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(studentName))
+                    break;
+
+                if (grades.TryGetValue(studentName, out double studentGrade))
+                    PrintGrade(new KeyValuePair<string, double>(studentName, studentGrade)); 
+                else
+                    Console.WriteLine($"{studentName} is not in PG2.");
+            } while (true);
 
 
 
@@ -228,6 +236,19 @@ namespace Day04
                     Pick any student and curve the grade (add 5) that is stored in the grades dictionary
              
             */
+        }
+
+        private static void PrintGrade(KeyValuePair<string, double> studentGrade)
+        {
+            Console.Write($"{studentGrade.Key,-15}");
+            double grade = studentGrade.Value;
+            if (grade < 59.5) Console.ForegroundColor = ConsoleColor.Red;
+            else if (grade < 69.5) Console.ForegroundColor = ConsoleColor.DarkYellow;
+            else if (grade < 79.5) Console.ForegroundColor = ConsoleColor.Yellow;
+            else if (grade < 89.5) Console.ForegroundColor = ConsoleColor.Blue;
+            else Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{grade:N2}");
+            Console.ResetColor();
         }
     }
 }
