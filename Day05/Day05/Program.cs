@@ -236,6 +236,47 @@ namespace Day04
                     Pick any student and curve the grade (add 5) that is stored in the grades dictionary
              
             */
+            do
+            {
+                Console.Write("Please enter the student's name to curve: ");
+                string studentName = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(studentName))
+                    break;
+
+                if (grades.TryGetValue(studentName, out double studentGrade))
+                {
+                    studentGrade = Math.Min(100, studentGrade + 5);
+                    grades[studentName] = studentGrade;
+                    PrintGrade(new KeyValuePair<string, double>(studentName, studentGrade));
+                }
+                else
+                    Console.WriteLine($"{studentName} is not in PG2.");
+            } while (true);
+
+
+            Dictionary<string, float> menu = new()
+            {
+                { "Supreme", 15.99F },
+                { "Organic Veggie", 23.99F }
+            };
+            menu.Add("Meat Lovers", 12.99F);
+            menu["Cheese"] = 9.99F;
+
+            //Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("de-DE");
+            //Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("de-DE");
+            //Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.WriteLine("  Luigi Mario's Pizzeria  ");
+            foreach (var menuItem in menu)
+            {
+                Console.WriteLine($"{menuItem.Key,15} {menuItem.Value,7:C2}");
+            }
+
+            string order = "Meat Lovers";
+            if (menu.TryGetValue(order, out float price))
+            {
+                menu[order] = price * 1.07F;
+                Console.WriteLine($"The {order} used to costs {price:C2} but now is {menu[order]:C2}. Thanks PUTIN!");
+            }
         }
 
         private static void PrintGrade(KeyValuePair<string, double> studentGrade)
