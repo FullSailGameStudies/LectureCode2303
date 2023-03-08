@@ -11,6 +11,20 @@ namespace Day04
         {
             Sword, Axe, Spear, Mace
         }
+
+        static int LinearSearch(List<int> numbers, int searchNumber)
+        {
+            int foundIndex = -1;
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                if(searchNumber == numbers[i])
+                {
+                    foundIndex = i;
+                    break;
+                }
+            }
+            return foundIndex;
+        }
         static void Main(string[] args)
         {
             /*
@@ -33,6 +47,16 @@ namespace Day04
                         4) if reach the end of the list, return -1 which means not found
                     
             */
+            List<int> nums = new() { 1, 2, 3, 4, 5, 420 };
+            int index = LinearSearch(nums, 13);
+            if(index != -1)
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("Not found");
+            }
 
 
 
