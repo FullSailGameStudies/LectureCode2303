@@ -36,6 +36,7 @@ namespace Day06
 
             bool wasFound = backpack.Remove(Weapon.Mace);
             if (!wasFound) Console.WriteLine($"{Weapon.Mace} was NOT found.");
+            else Console.WriteLine("Mace was removed.");
 
 
 
@@ -56,7 +57,30 @@ namespace Day06
             Dictionary<string, double> grades = new();
             foreach (var student in students)
                 grades.Add(student, rando.NextDouble() * 100);
-            
+
+            Console.Clear();
+            do
+            {
+                PrintGrades(grades);
+                Console.Write("Enter the name to remove: ");
+                string name = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(name)) break;
+
+                if (grades.Remove(name))
+                    Console.WriteLine($"{name} was removed from the course.");
+                else
+                    Console.WriteLine($"{name} was not in PG2.");
+
+            } while (true);
+        }
+
+        private static void PrintGrades(Dictionary<string, double> grades)
+        {
+            Console.WriteLine("---------------PG2-------------");
+            foreach (KeyValuePair<string,double> student in grades)
+            {
+                Console.WriteLine($"{student.Key,-10}{student.Value:N2}");
+            }
         }
     }
 }
