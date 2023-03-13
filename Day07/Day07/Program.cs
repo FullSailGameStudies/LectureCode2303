@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using Day07CL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,10 +38,21 @@ namespace Day07
 
 
      */
+
+    enum Superpower
+    {
+        Teleportation, Invisibility, Speed, MatterManipulation, Money, Flight
+    }
     internal class Program
     {
         static void Main(string[] args)
         {
+            Inventory backpack = new Inventory();
+            backpack.Capacity = 10;//compiler will call the set
+            backpack.Capacity = -5;
+
+            int cap = backpack.Capacity;//calls the get
+            Console.WriteLine(backpack.Capacity);//calls the get
 
             /*
                 CHALLENGE 1:
@@ -63,11 +76,6 @@ namespace Day07
                 CHALLENGE 2:
                     Add an age field to the Person class
             */
-
-
-
-
-
 
 
             /*  
@@ -95,14 +103,16 @@ namespace Day07
 
                 here is an auto-property (no field or code for the get/set is needed)
                 public ConsoleColor Color { get; private set; } = ConsoleColor.DarkCyan;
-
+            
+                CHALLENGE 2:
+                    Add an age field to the Person class
             
                 CHALLENGE 3:
                     Add an Age property provide access to the _age field
                     Add an auto-property for Name
             */
 
-
+            
 
 
 
