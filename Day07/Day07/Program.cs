@@ -47,7 +47,8 @@ namespace Day07
     {
         static void Main(string[] args)
         {
-            Inventory backpack = new Inventory();
+            Inventory backpack = new Inventory();//calling the default constructor
+            backpack = new Inventory(15);//call a different constructor
             backpack.Capacity = 10;//compiler will call the set
             backpack.Capacity = -5;
 

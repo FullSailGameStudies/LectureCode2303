@@ -36,8 +36,26 @@ namespace Day07CL
 
         }
 
+        public int Count
+        {
+            get { return Items.Count; }
+        }
+
         //auto-prop. the compiler will provide the backing field
         public List<string> Items { get; private set; } = new List<string>();
+        #endregion
+
+        #region Constructors (ctor)
+        //public Inventory()//default ctor: no parameters
+        //{
+        //    _capacity = 10;
+        //}
+
+        public Inventory(int capacity = 10) 
+        {
+            //capacity = Capacity;//BACKWARDS!
+            Capacity = capacity;
+        }
         #endregion
 
         void DoIt(int cap)
