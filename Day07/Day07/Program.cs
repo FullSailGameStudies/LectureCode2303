@@ -47,6 +47,13 @@ namespace Day07
     {
         static void Main(string[] args)
         {
+            //Top-Left is (0,0)
+            //Bottom-right is (Console.WindowWidth-1, Console.WindowHeight-1)
+            int width = Console.WindowWidth;//0-(width-1)
+            int height = Console.WindowHeight;
+
+            Console.SetCursorPosition(width/2,height/2);
+
             Inventory backpack = new Inventory();//calling the default constructor
             backpack = new Inventory(15);//call a different constructor
             backpack.Capacity = 10;//compiler will call the set
@@ -113,7 +120,7 @@ namespace Day07
                     Add an auto-property for Name
             */
 
-            
+
 
 
 
@@ -143,7 +150,16 @@ namespace Day07
                     Add a constructor to the Person class to initialize Age and Name
             */
 
+            Person bruce = new Person(35, "Bruce Wayne");
+            Person alfred = new Person(85, "Alfred Pennyworth");
 
+            int myAge = bruce.Age;
+
+            int humans = Person.NumberOfPersons;
+
+            bruce.Eat("Lobster pomodore");//this points to bruce
+            alfred.Eat("crumpets");//this points to alfred
+            Person.PersonReport();
 
 
 
@@ -167,7 +183,7 @@ namespace Day07
                 CHALLENGE 5:
                     write an ItsMyBirthday method. increment age and print out a happy message.
             */
-
+            bruce.ItsMybirthday();
 
 
 
