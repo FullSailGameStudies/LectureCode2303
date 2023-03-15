@@ -56,6 +56,24 @@ namespace Day08
                     Create a List of Weapon. Create several Pistols and add them to the list of weapons.
             */
 
+            int num = 5;//4 bytes
+            long bigNum = num;//8 bytes. Implicit casting.
+            num = (int)bigNum;//explicit casting
+
+            Person bruce = new Person();
+            Employee alfred = new Employee(250000, "Alfred", 85);
+
+            //UPCASTING: from a DERIVED type to a BASE type
+            //Employee to Person
+            //ALWAYS SAFE!
+            Person butler = alfred;//upcasting
+
+            List<Weapon> weapons = new List<Weapon>();
+            Pistol reuger = new Pistol(100, 50, 5, 2);
+            Bat lucille = new Bat(Material.Wood, 4, 15);
+            weapons.Add(reuger);//upcasting
+            weapons.Add(lucille);//upcasting
+
 
 
 
@@ -97,7 +115,29 @@ namespace Day08
                     Downcast to a Pistol and print the rounds and mag capacity of each pistol
             */
 
+            //DOWNCASTING: from a BASE type to a DERIVED type
+            //from Person (butler) to Employee (e1)
+            //NOT SAFE!!!!
+            //bruce = new Employee(10000000, "Bruce", 35);
 
+            //#1 explicit cast in a try-catch
+            try
+            {
+                Employee e1 = (Employee)bruce;
+            }
+            catch (Exception)
+            {
+            }
+
+            //#2 'as' keyword
+            //  if it CANNOT be cast as the type, it will assign NULL
+            Employee? e2 = bruce as Employee;
+            if(e2 != null)
+                Console.WriteLine($"Salary: {e2.Salary}");
+
+            //#3 'is' keyword w/ pattern matching
+            if(bruce is Employee e3)
+                Console.WriteLine($"Salary: {e3.Salary}");
 
 
 

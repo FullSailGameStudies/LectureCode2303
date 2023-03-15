@@ -17,6 +17,12 @@ namespace Day08CL
             Age = age;
         }
 
+        public Person()
+        {
+            Name = "Bruce Wayne";
+            Age = 35;
+        }
+
         public void Eat(string food)
         {
             Console.WriteLine($"I'm hungry. let's eat some {food}.");
