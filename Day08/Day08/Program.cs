@@ -1,4 +1,6 @@
-﻿namespace Day08
+﻿using Day08CL;
+
+namespace Day08
 {
     /*                    DERIVING CLASSESS          
                                                                
@@ -31,6 +33,7 @@
                     Add a constructor that calls the base constructor
              
             */
+            //Weapon knife = new Weapon(5,10);
 
 
 
