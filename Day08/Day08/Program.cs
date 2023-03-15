@@ -139,7 +139,14 @@ namespace Day08
             if(bruce is Employee e3)
                 Console.WriteLine($"Salary: {e3.Salary}");
 
-
+            for (int i = 0; i < weapons.Count; i++)
+            {
+                weapons[i].ShowMe();
+                if (weapons[i] is Pistol bang)
+                    Console.WriteLine($"It's a Pistol! with {bang.Rounds} and {bang.MagCapacity} capacity.");
+                else if (weapons[i] is Bat bat)
+                    Console.WriteLine($"It's a {bat.BatMaterial} bat.");
+            }
 
 
 
