@@ -142,10 +142,10 @@ namespace Day08
             for (int i = 0; i < weapons.Count; i++)
             {
                 weapons[i].ShowMe();
-                if (weapons[i] is Pistol bang)
-                    Console.WriteLine($"It's a Pistol! with {bang.Rounds} and {bang.MagCapacity} capacity.");
-                else if (weapons[i] is Bat bat)
-                    Console.WriteLine($"It's a {bat.BatMaterial} bat.");
+                //if (weapons[i] is Pistol bang)
+                //    Console.WriteLine($"It's a Pistol! with {bang.Rounds} and {bang.MagCapacity} capacity.");
+                //else if (weapons[i] is Bat bat)
+                //    Console.WriteLine($"It's a {bat.BatMaterial} bat.");
             }
 
 
@@ -176,6 +176,10 @@ namespace Day08
                     Override Weapon's ShowMe method in the Pistol method.
                     In Pistol's version, call the base version and print out the rounds and magCapacity
             */
+
+            alfred.Eat("crumpets and tea");
+            Person p1 = alfred;//upcasting
+            p1.Eat("bagels and cream");
         }
     }
 }

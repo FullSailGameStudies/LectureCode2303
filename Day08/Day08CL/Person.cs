@@ -23,7 +23,7 @@ namespace Day08CL
             Age = 35;
         }
 
-        public void Eat(string food)
+        public virtual void Eat(string food)
         {
             Console.WriteLine($"I'm hungry. let's eat some {food}.");
         }

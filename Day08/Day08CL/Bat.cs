@@ -19,5 +19,11 @@ namespace Day08CL
         {
             BatMaterial = batMaterial;
         }
+
+        public override void ShowMe()
+        {
+            base.ShowMe();
+            Console.WriteLine($"It's a {BatMaterial} bat.");
+        }
     }
 }

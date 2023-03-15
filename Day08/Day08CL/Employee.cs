@@ -15,5 +15,12 @@ namespace Day08CL
         {
             Salary = salary;
         }
+
+        public override void Eat(string nomnom)
+        {
+            Console.WriteLine("\nGoing to lunch now. clocking out.");
+            base.Eat(nomnom);//when calling the base version, you are EXTENDING the behavior
+            Console.WriteLine("I'm back now. Time to do some more work.");
+        }
     }
 }
