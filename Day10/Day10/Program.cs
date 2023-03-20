@@ -49,25 +49,30 @@
 
             */
 
-            string directories = @"C:\temp\230"; //use @ in front of the string to ignore escape sequences inside the string
+            string directories = @"C:\temp\2303"; //use @ in front of the string to ignore escape sequences inside the string
             string fileName = "tempFile.txt";
             string fullPath = Path.Combine(directories, fileName); //use Path.Combine to get the proper directory separators
 
             char delimiter = '$';
-            //#1: open the file
-            using (StreamWriter sw = new StreamWriter(fullPath))//open/create the file
+            if (File.Exists(fullPath))
             {
-                //#2: write to the file
-                sw.Write("Batman > Aquaman. MOST TRUE!");
-                sw.Write(delimiter);
-                sw.Write(5);
-                sw.Write(delimiter);
-                sw.Write(420);
-                sw.Write(delimiter);
-                sw.Write(13.7);
-                sw.Write(delimiter);
-                sw.Write(true);
-            }//#3: CLOSE THE FILE!
+                //#1: open the file
+                using (StreamWriter sw = new StreamWriter(fullPath))//open/create the file
+                {
+                    //#2: write to the file
+                    sw.Write("Batman > Aquaman. MOST TRUE!");
+                    sw.Write(delimiter);
+                    sw.Write(5);
+                    sw.Write(delimiter);
+                    sw.Write(420);
+                    sw.Write(delimiter);
+                    sw.Write(13.7);
+                    sw.Write(delimiter);
+                    sw.Write(true);
+                }//#3: CLOSE THE FILE!
+            }
+            else
+                Console.WriteLine($"{fullPath} does not exist STEEV!");
 
 
 
@@ -82,8 +87,8 @@
                 use the string's Split method
 
             */
-            string csvString = "Batman;Bruce Wayne;Bats;The Dark Knight";
-            string[] data = csvString.Split(';');
+            string csvString = "Batman;Bruce Wayne;Bats;The Dark Knight*Joker*The Riddler*Bane*Poison Ivy*Calendar Man";
+            string[] data = csvString.Split(new char[] { ';' , '*' });
 
             /*
                 CHALLENGE 1:
@@ -92,6 +97,17 @@
              
             */
 
+            //#1: open the file
+            using (StreamReader sr = new StreamReader(fullPath))
+            {
+                string line = sr.ReadLine();
+                Console.WriteLine(line);
+                string[] data1 = line.Split(delimiter);
+                foreach (string data2 in data1) 
+                { 
+                    Console.WriteLine(data2); 
+                }
+            }//#3 close the file
 
 
 
