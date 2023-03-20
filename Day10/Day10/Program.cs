@@ -1,5 +1,19 @@
-﻿namespace Day10
+﻿using Newtonsoft.Json;
+
+namespace Day10
 {
+
+    public enum Superpower
+    {
+        Money, Flight, Strength, Speed, Swimming
+    }
+
+    class Superhero
+    {
+        public string Name { get; set; }
+        public string Secret { get; set; }
+        public Superpower Power { get; set;}
+    }
 
     /*
         ╔══════════╗ 
@@ -120,7 +134,26 @@
                 Saving the state (data) of objects
 
             */
+            List<Superhero> JLA = new List<Superhero>();
+            JLA.Add(new Superhero() { Name = "Batman", Secret = "Bruce Wayne", Power = Superpower.Money });
+            JLA.Add(new Superhero() { Name = "Superman", Secret = "Clark Kent", Power = Superpower.Flight });
+            JLA.Add(new Superhero() { Name = "Wonder Woman", Secret = "Diana Prince", Power = Superpower.Strength });
+            JLA.Add(new Superhero() { Name = "Flash", Secret = "Barry Allen", Power = Superpower.Speed });
+            JLA.Add(new Superhero() { Name = "Aquaman", Secret = "Arthur Curry", Power = Superpower.Swimming });
 
+            fullPath = "JLA.json";
+            //WriteAllText: does all 3 - open, writes, closes the file
+            File.WriteAllText(fullPath, JsonConvert.SerializeObject(JLA, Formatting.Indented));
+
+            //using (StreamWriter sw = new StreamWriter(fullPath))
+            //{
+            //    using (JsonTextWriter jtw = new JsonTextWriter(sw))
+            //    {
+            //        JsonSerializer jtwSerializer = new JsonSerializer();
+            //        jtw.Formatting = Formatting.Indented;
+            //        jtwSerializer.Serialize(jtw, JLA);
+            //    }
+            //}
 
 
 
@@ -134,6 +167,25 @@
                 Recreating the objects from the saved state (data) of objects
 
             */
+
+            //ReadAllText: does all 3 - open, reads, closes the file
+            if (File.Exists(fullPath))
+            {
+                string jlaText = File.ReadAllText(fullPath);
+
+                try
+                {
+                    List<Superhero> otherJLA = JsonConvert.DeserializeObject<List<Superhero>>(jlaText);
+                    foreach (var hero in otherJLA)
+                    {
+                        Console.WriteLine($"Hello citizen! I am {hero.Name} (aka {hero.Secret}). My superpower is {hero.Power}.");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("ERROR! ERROR! file format error!");
+                }
+            }
 
         }
     }
