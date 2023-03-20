@@ -49,10 +49,25 @@
 
             */
 
-            string directories = @"C:\temp\2212"; //use @ in front of the string to ignore escape sequences inside the string
+            string directories = @"C:\temp\230"; //use @ in front of the string to ignore escape sequences inside the string
             string fileName = "tempFile.txt";
-            string filePath = Path.Combine(directories, fileName); //use Path.Combine to get the proper directory separators
+            string fullPath = Path.Combine(directories, fileName); //use Path.Combine to get the proper directory separators
 
+            char delimiter = '$';
+            //#1: open the file
+            using (StreamWriter sw = new StreamWriter(fullPath))//open/create the file
+            {
+                //#2: write to the file
+                sw.Write("Batman > Aquaman. MOST TRUE!");
+                sw.Write(delimiter);
+                sw.Write(5);
+                sw.Write(delimiter);
+                sw.Write(420);
+                sw.Write(delimiter);
+                sw.Write(13.7);
+                sw.Write(delimiter);
+                sw.Write(true);
+            }//#3: CLOSE THE FILE!
 
 
 
